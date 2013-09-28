@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1380389898 source:c:\users\sapara\dropbox\steeringbehaviors\src\number.cpp
+	<cstdlib>
+	<ctime>
+	"../include/Number.h"
+
+1380389174 c:\users\sapara\dropbox\steeringbehaviors\include\number.h
+
+1380390260 source:c:\users\sapara\dropbox\steeringbehaviors\src\main.cpp
+	<iostream>
+	"../include/Number.h"
+
