@@ -5,20 +5,20 @@
 
 1380409838 c:\users\sapara\dropbox\steeringbehaviors\include\number.h
 
-1380416638 source:c:\users\sapara\dropbox\steeringbehaviors\src\main.cpp
+1380416708 source:c:\users\sapara\dropbox\steeringbehaviors\src\main.cpp
 	<iostream>
 	"../include/Number.h"
 	"../include/Random.h"
 	"../include/Color.h"
 	<ctime>
 
-1380413352 source:c:\users\sapara\dropbox\steeringbehaviors\src\color.cpp
+1380416780 source:c:\users\sapara\dropbox\steeringbehaviors\src\color.cpp
 	"../include/Color.h"
 	"../include/Number.h"
 	"../include/Random.h"
 	<cstdlib>
 
-1380412267 c:\users\sapara\dropbox\steeringbehaviors\include\color.h
+1380416791 c:\users\sapara\dropbox\steeringbehaviors\include\color.h
 	"Number.h"
 
 1380416148 source:c:\users\sapara\dropbox\steeringbehaviors\src\fractalnoise.cpp
@@ -35,10 +35,10 @@
 	<ctime>
 	<cmath>
 
-1380416518 c:\users\sapara\dropbox\steeringbehaviors\include\random.h
+1380416804 c:\users\sapara\dropbox\steeringbehaviors\include\random.h
 	"FractalNoise.h"
 
-1380416514 source:c:\users\sapara\dropbox\steeringbehaviors\src\random.cpp
+1380416811 source:c:\users\sapara\dropbox\steeringbehaviors\src\random.cpp
 	"../include/Random.h"
 	"../include/FractalNoise.h"
 	<cstdlib>
@@ -56,4 +56,10 @@
 	"../include/PerlinNoise.hpp"
 
 1380413985 c:\users\sapara\dropbox\steeringbehaviors\include\perlinnoise.hpp
+
+1380494548 source:c:\users\sapara\dropbox\steeringbehaviors\src\pvector.cpp
+	"../include/PVector.h"
+
+1380494584 c:\users\sapara\dropbox\steeringbehaviors\include\pvector.h
+	<tgmath.h>
 

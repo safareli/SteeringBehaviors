@@ -34,11 +34,13 @@
 		<Unit filename="include/Color.h" />
 		<Unit filename="include/FractalNoise.h" />
 		<Unit filename="include/Number.h" />
+		<Unit filename="include/PVector.h" />
 		<Unit filename="include/Perlin.h" />
 		<Unit filename="include/Random.h" />
 		<Unit filename="src/Color.cpp" />
 		<Unit filename="src/FractalNoise.cpp" />
 		<Unit filename="src/Number.cpp" />
+		<Unit filename="src/PVector.cpp" />
 		<Unit filename="src/Perlin.cpp" />
 		<Unit filename="src/Random.cpp" />
 		<Unit filename="src/main.cpp">
