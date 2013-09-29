@@ -1,8 +1,11 @@
-#include <cstdlib>
-#include <ctime>
+/**
+ * Number.cpp
+ * Date: 09/29/13
+ * Author: Irakli Saparishvili
+ */
+#include "../include/Random.h"
 #include "../include/Number.h"
 
-bool Number::mIsSeeded = false;
 Number::Number(float from,float to){
     mFrom = from;
     mTo = to;
@@ -11,9 +14,8 @@ Number::Number(float from,float to){
 Number::Number(float value){
     mValue = value;
 }
-Number::~Number(){
-    //dtor
-}
+Number::Number(){}
+Number::~Number(){}
 float Number::getFrom(){
     return (mIsRandom)?mFrom:mValue;
 }
@@ -24,12 +26,5 @@ int Number::getInt(){
     return (int) getFloat();
 }
 float Number::getFloat(){
-    return (mIsRandom)?random(mFrom,mTo):mValue;
-}
-float Number::random(float from,float to){
-    if (!Number::mIsSeeded ){
-        Number::mIsSeeded = true;
-        srand((unsigned)time(0));
-    }
-    return ( from + (float)rand()/((float)RAND_MAX/(to-from) ) );
+    return (mIsRandom)?Random::get(mFrom,mTo):mValue;
 }
