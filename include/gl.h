@@ -5,9 +5,8 @@ namespace GL{
     void init();
     void update();
     void background(Color c);
-    //void ellipse (double x, double y, double width, double height,double angle = 0);
-    void circle(double cx, double cy, double r);
-
+    void circle(double cx, double cy, double r,bool fill);
+    void line(double x, double y, double r,double theta);
     void color(Color c);
 
 }

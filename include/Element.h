@@ -14,7 +14,9 @@ class Element
             MOVE_AWAY_FROM_AN_OVERLAPPING_ELEMENT
         };
         enum Forms{
-            CIRCLE
+            CIRCLE,
+            CIRCUMFERENCE,
+            ARROW
         };
         Element(int x, int y,int r,float angle,Color &c);
         Element();
@@ -23,9 +25,10 @@ class Element
         void applyBehaviours(int* behaviours,int behaviourLength,Element* elements,int elementLength);
     protected:
     private:
+        void arrow(double x, double y, double r,double theta);
         Color color;
         void applyForce(PVector force);
-        float maxVelocity = 1 ,maxForce = 1, mass = 1;
+        float maxVelocity = 2 ,maxForce = 0.1, mass = 1;
         int radius;
         PVector location, velocity, acceleration;
 };

@@ -30,29 +30,35 @@ namespace GL{
         glColor3f(rgba[0],rgba[1],rgba[2]);
         //glColor3f(0,0,0);
     }
+    void line(double x, double y, double r,double theta){
+        glBegin(GL_LINES);
+            glVertex2f(x, y);
+            glVertex2f(x + cosf(theta)*r, y - sinf(theta)*r);
+        glEnd();
+    }
+    void circle (double cx, double cy, double r,bool fill){
+        //http://slabode.exofire.net/circle_draw.shtml
+        int num_segments = 10 * sqrtf(r);
+        float theta = 2 * M_PI / float(num_segments);
+        float c = cosf(theta);//precalculate the sine and cosine
+        float s = sinf(theta);
+        float t;
 
-    void circle (double cx, double cy, double r){
-        glPushMatrix();
-            int num_segments = 10 * sqrtf(r);
-	        float theta = 2 * 3.1415926 / float(num_segments);
-			float c = cosf(theta);//precalculate the sine and cosine
-			float s = sinf(theta);
-			float t;
+        float x = r;//we start at angle = 0
+        float y = 0;
+        if(fill)
+            glBegin(GL_TRIANGLE_FAN);
+        else
+            glBegin(GL_LINE_LOOP);
 
-			float x = r;//we start at angle = 0
-			float y = 0;
-            glBegin( GL_TRIANGLE_FAN  );
-            //glBegin( GL_TRIANGLE_FAN );
-            //glBegin(GL_LINE_LOOP);
-               	for(int ii = 0; ii < num_segments; ii++) {
-					glVertex2f(x + cx, y + cy);//output vertex
+            for(int ii = 0; ii < num_segments; ii++) {
+                glVertex2f(x + cx, y + cy);//output vertex
 
-					//apply the rotation matrix
-					t = x;
-					x = c * x - s * y;
-					y = s * t + c * y;
-				}
-            glEnd();
-        glPopMatrix();
+                //apply the rotation matrix
+                t = x;
+                x = c * x - s * y;
+                y = s * t + c * y;
+            }
+        glEnd();
     }
 }

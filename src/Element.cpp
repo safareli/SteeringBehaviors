@@ -18,32 +18,43 @@ Element::Element(){}
 void Element::applyBehaviours(int* behaviours,int behaviourLength,Element* elements,int elementLength){
     for(int i = 0; i < behaviourLength; i++){
         switch(behaviours[i]){
-            case CHANGE_DIRECTION_WHILE_TOUCHING_ANOTHER_ELEMENT:
-            break;
+            case CHANGE_DIRECTION_WHILE_TOUCHING_ANOTHER_ELEMENT:{
+                for(int j = 0;j < elementLength;j++){
+                    Element ather = elements[j];
+                    if(ather.location == location) continue;
+                    PVector disired = location - ather.location;
+                    if(disired.mag() <= (radius + ather.radius)){
+                        PVector steer = disired - velocity;
+                        steer.limit(maxForce);
+                        applyForce(steer);
+                    }
+
+                }
+            }
 
             case CONSTRAIN_TO_SURFACE:{
-                int d = 20;
+                int d = 20 +radius;
                 PVector desired(0,0);
                 if (location.x < d) {
-                  desired = PVector(maxVelocity, velocity.y);
+                  desired = desired + PVector(maxVelocity, velocity.y);
                 }
                 else if (location.x > Base::WIDTH -d) {
-                  desired = PVector(-maxVelocity, velocity.y);
+                  desired = desired +  PVector(-maxVelocity, velocity.y);
                 }
 
                 if (location.y < d) {
-                  desired = PVector(velocity.x, maxVelocity);
+                  desired = desired +  PVector(velocity.x, maxVelocity);
                 }
                 else if (location.y > Base::HEIGHT-d) {
-                  desired = PVector(velocity.x, -maxVelocity);
+                  desired = desired +  PVector(velocity.x, -maxVelocity);
                 }
 
                 if (desired.mag() != 0) {
-                  desired.normalize();
-                  desired = desired * maxVelocity;
-                  PVector steer = desired - velocity;
-                  steer.limit(maxForce);
-                  applyForce(steer);
+                    desired.normalize();
+                    desired = desired * maxVelocity;
+                    PVector steer = desired - velocity;
+                    steer.limit(maxForce);
+                    applyForce(steer);
                 }
             }
 
@@ -72,17 +83,41 @@ void Element::update(){
 void Element::applyForce(PVector force) {
     // force = mass * acceleration
     // acceleration = force / mass
+
+    PVector a(force.x,force.y*-1);
+    a.normalize();
+    float degry = ((a.y < 0 )? -1 : 1) * acosf(a.x);
+    arrow(location.x,location.y,radius/2,degry);
+
     acceleration = acceleration + (force / mass);
 }
 
+void Element::arrow(double x, double y, double r,double theta){
+    GL::line(x,y,r,theta);
+    GL::line(x + cosf(theta)*r,y - sinf(theta)*r, sqrt(r),theta-210);
+    GL::line(x + cosf(theta)*r,y - sinf(theta)*r, sqrt(r),theta+210);
+}
 
 void Element::display(int form){
     color.regenerate();
     GL::color(color);
     switch(form){
-        case CIRCLE:
-            GL::circle(location.x,location.y,radius);
-        break;
+        case CIRCLE:{
+            GL::circle(location.x,location.y,radius,true);
+        }
+        case CIRCUMFERENCE:{
+            GL::circle(location.x,location.y,radius,false);
+            PVector a(velocity.x,velocity.y*-1);
+            a.normalize();
+            float degry = ((a.y < 0 )? -1 : 1) * acosf(a.x);
+            arrow(location.x,location.y,radius,degry);
+        }
+        case ARROW:{
+            PVector a(velocity.x,velocity.y*-1);
+            a.normalize();
+            float degry = ((a.y < 0 )? -1 : 1) * acosf(a.x);
+            arrow(location.x,location.y,radius,degry);
+        }
     }
 }
 
