@@ -1,6 +1,6 @@
 /**
  * Color.h
- * Date: 09/29/13
+ * Date: 10/01/13
  * Author: Irakli Saparishvili
  */
 #ifndef COLOR_H
@@ -14,17 +14,19 @@ class Color
     public:
         Color(Number &R, Number &G ,Number &B ,Number &A) ;
         Color(Number &R, Number &G ,Number &B);
+        void toDouble(double a[]);
+        void toFloat(float a[]);
         void setNoise();
         void setNoise(float stepSize);
         void regenerate();
+        unsigned char rgba[4];
         int get();
         virtual ~Color();
     protected:
     private:
         void init(Number &R, Number &G ,Number &B ,Number &A);
-        Number mR,mG,mB,mA;//generators
-        int m_R,m_G,m_B,m_A; //generated int values
-        float mnR,mnG,mnB,mnA; //noise steps
+        Number g_rgba[4];
+        float n_rgba[4];
         bool isNoise = false;
         float noiseStepSize;
 };

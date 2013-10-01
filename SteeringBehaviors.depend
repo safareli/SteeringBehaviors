@@ -5,20 +5,23 @@
 
 1380409838 c:\users\sapara\dropbox\steeringbehaviors\include\number.h
 
-1380416708 source:c:\users\sapara\dropbox\steeringbehaviors\src\main.cpp
+1380624738 source:c:\users\sapara\dropbox\steeringbehaviors\src\main.cpp
 	<iostream>
 	"../include/Number.h"
-	"../include/Random.h"
 	"../include/Color.h"
+	"../include/Base.h"
 	<ctime>
+	<GL/gl.h>
+	<GL/glu.h>
+	<Box2D/Box2D.h>
 
-1380416780 source:c:\users\sapara\dropbox\steeringbehaviors\src\color.cpp
+1380625253 source:c:\users\sapara\dropbox\steeringbehaviors\src\color.cpp
 	"../include/Color.h"
 	"../include/Number.h"
 	"../include/Random.h"
 	<cstdlib>
 
-1380416791 c:\users\sapara\dropbox\steeringbehaviors\include\color.h
+1380625328 c:\users\sapara\dropbox\steeringbehaviors\include\color.h
 	"Number.h"
 
 1380416148 source:c:\users\sapara\dropbox\steeringbehaviors\src\fractalnoise.cpp
@@ -62,4 +65,24 @@
 
 1380494584 c:\users\sapara\dropbox\steeringbehaviors\include\pvector.h
 	<tgmath.h>
+
+1380624808 source:c:\users\sapara\dropbox\steeringbehaviors\src\base.cpp
+	"../include/Base.h"
+	"../include/gl.h"
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<Box2D/Box2D.h>
+
+1380624362 c:\users\sapara\dropbox\steeringbehaviors\include\base.h
+	"../include/Color.h"
+	<Box2D/Box2D.h>
+
+1380625006 c:\users\sapara\dropbox\steeringbehaviors\include\gl.h
+	"Color.h"
+
+1380624857 source:c:\users\sapara\dropbox\steeringbehaviors\src\gl.cpp
+	"../include/gl.h"
+	"../include/Base.h"
+	<GL/gl.h>
+	<GL/glu.h>
 
