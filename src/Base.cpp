@@ -1,5 +1,6 @@
 #include "../include/Base.h"
 #include "../include/gl.h"
+#include <iostream>
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
 #include <Box2D/Box2D.h>
@@ -9,14 +10,39 @@ extern void setup();
 
 using namespace Base;
 namespace Base{
+    int WIDTH, HEIGHT;
+    int displayWidth, displayHeight;
+    bool isFullScreen(){
+        return WIDTH == displayWidth && HEIGHT == displayHeight;
+    }
+
+    void log(std::string const &str){
+        std::cout << str<< "\n";
+    }
+    void log(double d){
+        std::cout << d<< "\n";
+    }
+
+    void size(int w, int h){
+        WIDTH = w;
+        HEIGHT = h;
+
+		if(isFullScreen())
+            SDL_SetVideoMode(WIDTH,HEIGHT,32,SDL_OPENGL | SDL_FULLSCREEN);
+        else
+            SDL_SetVideoMode(WIDTH,HEIGHT,32,SDL_OPENGL);
+    }
+
     int run(){
 	    SDL_Init(SDL_INIT_EVERYTHING);
-		SDL_SetVideoMode(WIDTH,HEIGHT,32,SDL_OPENGL);
+        const SDL_VideoInfo * lInfo = SDL_GetVideoInfo();
+        displayWidth = lInfo->current_w;
+        displayHeight = lInfo->current_h;
 		Uint32 start;
 		SDL_Event event;
 		bool running=true;
-        GL::init();
 		setup();
+		GL::init();
 		while(running)
 		{
 			start=SDL_GetTicks();

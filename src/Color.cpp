@@ -12,6 +12,7 @@ Color::Color(Number &R, Number &G ,Number &B ,Number &A){
     init(R,G,B,A);
 }
 
+Color::Color(){}
 Color::Color(Number &R, Number &G ,Number &B){
     Number a(255);
     init(R,G,B,a);

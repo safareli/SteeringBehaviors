@@ -4,11 +4,11 @@
  * Author: Irakli Saparishvili
  */
 #include "../include/Random.h"
-#include "../include/FractalNoise.h"
+#include "../include/Perlin.h"
 #include <cstdlib>
 #include <ctime>
 
-FractalNoise Random::mPerlin = FractalNoise();
+Perlin Random::mPerlin = Perlin();
 bool Random::mIsSeeded = false;
 float Random::get(float from,float to){
     if (!Random::mIsSeeded ){

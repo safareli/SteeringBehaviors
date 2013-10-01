@@ -14,6 +14,7 @@ class Color
     public:
         Color(Number &R, Number &G ,Number &B ,Number &A) ;
         Color(Number &R, Number &G ,Number &B);
+        Color();
         void toDouble(double a[]);
         void toFloat(float a[]);
         void setNoise();

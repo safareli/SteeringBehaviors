@@ -6,12 +6,12 @@
  #ifndef RANDOM_H
 #define RANDOM_H
 
-#include "FractalNoise.h"
+#include "Perlin.h"
 
 class Random
 {
     public:
-        static FractalNoise mPerlin;
+        static Perlin mPerlin;
         static float get(float from = 0,float to = 1 );
         static float noise(float from ,float to ,float x,float y = 0,float z = 0);
     protected:
